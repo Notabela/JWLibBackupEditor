@@ -48,3 +48,6 @@ jobs:
 
       - name: Run tests 🧪
         run: yarn test
+
+      - name: Deploy
+        run: yarn deploy

@@ -38,7 +38,7 @@
         <b-button
           variant='primary'
           :disabled='!checkedTags.length'
-          @click='removeSelectedTags'
+          @click='$bvToast.show("complete-msg"); removeSelectedTags()'
           >
           Continue
         </b-button>
@@ -59,11 +59,12 @@
 </template>
 
 <script lang='ts'>
+  import Vue from 'vue';
   import { parseJWLibFile, getTags, downloadAsJWLibFile, removeSelectedTagsAndNotes } from '../helpers';
 
   const schemaVersion = 8;
 
-  export default {
+  export default Vue.extend({
     data() {
       return {
         backupFile: null as (Blob | null),
@@ -74,27 +75,21 @@
       }
     },
     computed: {
-      isSupportedSchema() {
-        // @ts-ignore
+      isSupportedSchema(): Boolean {
         return !this.parsedFile || this.parsedFile.manifest.userDataBackup.schemaVersion === schemaVersion;
       }
     },
     methods: {
       async onInput () {
-        // @ts-ignore
         if (this.backupFile) {
-          // @ts-ignore
           this.parsedFile = await parseJWLibFile(this.backupFile);
           this.tags = getTags(this.parsedFile.db);
         } else {
-          // @ts-ignore
           this.parsedFile = null;
         }
       },
       removeSelectedTags() {
         this.working = true;
-        // @ts-ignore
-        this.$bvToast.show('complete-msg');
 
         setTimeout(() => {
           const newJWLibFile = removeSelectedTagsAndNotes(this.checkedTags, this.parsedFile!)
@@ -103,5 +98,5 @@
         }, 1000)
       }
     }
-  }
+  })
 </script>
