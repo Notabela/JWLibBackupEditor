@@ -4,8 +4,6 @@
       <h1 class='text-center mt-2 font-weight-light'>JWLib Backup Editor</h1>
       <p class='text-center'>
         A tool for removing notes in a .jwlibrary backup file by Tag.
-      </p>
-      <p class='text-center'>
         Please read the <a href='https://github.com/Notabela/JWLibBackupEditor#important-notes' target='_blank'>disclaimer notes</a> before proceeding
       </p>
       <Upload />
