@@ -6,7 +6,7 @@
     :state='Boolean(backupFile)'
     placeholder='Choose a .jwlibrary backup file or drop it here...'
     drop-placeholder='Drop file here'
-    accept='.jwlibrary'
+    accept='*'
     @input='onInput'
   ></b-form-file>
   <b-card
@@ -49,7 +49,7 @@
     </b-toast>
   </b-card>
   <b-card
-    v-else-if="!isSupportedSchema"
+    v-if="!isSupportedSchema"
   >
     <b-card-text>
       The backup file version is not supported. Please check back later for an update.
