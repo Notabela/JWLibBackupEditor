@@ -7,7 +7,10 @@
     </b-container>
     <footer class='text-center'>
       <p>© {{new Date().getFullYear()}} Notabela. All rights reserved.</p>
-      <p>"JW Library" is a registered trademark of Watch Tower Bible and Tract Society of Pennsylvania.</p>
+      <a class='d-flex justify-content-center align-items-center' href='https://github.com/Notabela/JWLibBackupEditor' target='_blank'>
+      <img src='/github.png' class='mr-1' width='20rem' alt='github logo' />
+        Visit project on Github
+      </a>
     </footer>
   </div>
 </template>
@@ -29,6 +32,6 @@ export default Vue.extend({})
   }
 
   body {
-    margin-bottom: 9.6rem;
+    margin-bottom: 9rem;
   }
 </style>
