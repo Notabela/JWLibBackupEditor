@@ -78,7 +78,6 @@ export default {
       config.node = { fs: 'empty' }
     }
   },
-  mode: 'spa',
   router: {
    base: '/JWLibBackupEditor/'
   }
