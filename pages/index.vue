@@ -2,7 +2,10 @@
   <div>
     <b-container>
       <h1 class='text-center mt-2 font-weight-light'>JWLib Backup Editor</h1>
-      <p class='text-center'>A tool for removing notes in a .jwlibrary backup file by Tag</p>
+      <p class='text-center'>
+        A tool for removing notes in a .jwlibrary backup file by Tag.
+        Please read the <a href='https://github.com/Notabela/JWLibBackupEditor#important-notes'>disclaimer notes</a> before proceeding
+      </p>
       <Upload />
     </b-container>
     <footer class='text-center'>
