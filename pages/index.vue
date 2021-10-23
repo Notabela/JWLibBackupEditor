@@ -8,7 +8,7 @@
     <footer class='text-center'>
       <p>© {{new Date().getFullYear()}} Notabela. All rights reserved.</p>
       <a class='d-flex justify-content-center align-items-center' href='https://github.com/Notabela/JWLibBackupEditor' target='_blank'>
-      <img src='JWLibBackupEditor/github.png' class='mr-1' width='20rem' alt='github logo' />
+      <img src='github.png' class='mr-1' width='20rem' alt='github logo' />
         Visit project on Github
       </a>
     </footer>

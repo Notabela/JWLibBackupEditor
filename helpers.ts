@@ -6,7 +6,7 @@ import { saveAs } from 'file-saver';
 let SQL: SqlJsStatic;
 
 (async function() {
-  SQL = await initSqlJS({ locateFile: file => `JWLibBackupEditor/${ file }`})
+  SQL = await initSqlJS({ locateFile: file => `${ file }`})
 })();
 
 export function parseJWLibFile(file: Blob) {
