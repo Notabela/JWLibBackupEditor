@@ -23,7 +23,7 @@ export default {
         'data-name': 'BMC-Widget',
         'data-cfasync': 'false',
         'data-id': 'notabela',
-        'data-message': 'Thank you',
+        'data-message': 'Buy me a coffee',
         'data-description': 'Buy me a coffee!',
         'data-position': 'Right',
         'data-x_margin': '18',
@@ -78,7 +78,7 @@ export default {
       config.node = { fs: 'empty' }
     }
   },
-
+  mode: 'spa',
   router: {
    base: '/JWLibBackupEditor/'
   }
