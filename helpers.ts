@@ -34,7 +34,18 @@ export function downloadAsJWLibFile(file: JWLibFile) {
 
   const dbName = file.manifest.userDataBackup.databaseName;
   zip.file(dbName, file.db);
-  zip.generateAsync({type: 'blob',  compression: "DEFLATE"}).then((zipFile) => saveAs(zipFile, `${file.manifest.name}.jwlibrary`))
+  zip.generateAsync({type: 'blob',  compression: "DEFLATE"})
+  .then((zipFile) => {
+      // download file
+      const link = (window.URL || window.webkitURL).createObjectURL(zipFile);
+      const a = document.createElement('a');
+      a.setAttribute("download", `${file.manifest.name}.jwlibrary`);
+      a.setAttribute("href", link);
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a)
+    // saveAs(zipFile, `${file.manifest.name}.jwlibrary`)
+  })
 }
 
 export function getTags(dbArray: Uint8Array) {
