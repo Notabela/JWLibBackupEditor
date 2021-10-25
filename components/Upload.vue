@@ -6,8 +6,7 @@
     :state='Boolean(backupFile)'
     placeholder='Choose a .jwlibrary backup file or drop it here...'
     drop-placeholder='Drop file here'
-    accept='*'
-    @input='onInput'
+    accept='.jwlibrary'
   ></b-form-file>
   <b-card
     v-if='parsedFile && isSupportedSchema'
@@ -49,7 +48,7 @@
     </b-toast>
   </b-card>
   <b-card
-    v-if="!isSupportedSchema"
+    v-if='parsedFile && !isSupportedSchema'
   >
     <b-card-text>
       The backup file version is not supported. Please check back later for an update.
@@ -79,15 +78,17 @@
         return !this.parsedFile || this.parsedFile.manifest.userDataBackup.schemaVersion === schemaVersion;
       }
     },
-    methods: {
-      async onInput () {
-        if (this.backupFile) {
-          this.parsedFile = await parseJWLibFile(this.backupFile);
+    watch: {
+      async backupFile(value) {
+        if (value) {
+          this.parsedFile = await parseJWLibFile(value);
           this.tags = getTags(this.parsedFile.db);
         } else {
           this.parsedFile = null;
         }
-      },
+      }
+    },
+    methods: {
       removeSelectedTags() {
         this.working = true;
 
