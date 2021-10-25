@@ -14,12 +14,15 @@ export function parseJWLibFile(file: Blob) {
     const reader = new FileReader();
 
     reader.onload = async () => {
+      try {
       const zip = await JSZip.loadAsync(reader.result!);
       const manifest = JSON.parse(await zip.files['manifest.json'].async('string'));
       const db = await zip.files['userData.db'].async('uint8array');
-
-      console.log(manifest)
-      resolve({ manifest, db });
+        resolve({ manifest, db });
+      } catch (error) {
+        console.log(error)
+        reject(error)
+      }
     }
 
     reader.onerror = reject;
