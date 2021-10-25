@@ -82,7 +82,6 @@
       async backupFile(value) {
         if (value) {
           this.parsedFile = await parseJWLibFile(value);
-          console.log(this.parsedFile);
           this.tags = getTags(this.parsedFile.db);
           this.checkedTags = []; // reset checked tags
         } else {
