@@ -80,11 +80,18 @@
     },
     watch: {
       async backupFile(value) {
+        console.log('backupFile uploaded');
+
+        try {
         if (value) {
           this.parsedFile = await parseJWLibFile(value);
           this.tags = getTags(this.parsedFile.db);
+          this.checkedTags = []; // reset checked tags
         } else {
           this.parsedFile = null;
+        }
+        } catch (error) {
+          console.error(error);
         }
       }
     },
