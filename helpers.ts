@@ -14,15 +14,12 @@ export function parseJWLibFile(file: Blob) {
     const reader = new FileReader();
 
     reader.onload = async () => {
-      try {
       const zip = await JSZip.loadAsync(reader.result!);
       const manifest = JSON.parse(await zip.files['manifest.json'].async('string'));
-      const db = await zip.files['userData.db'].async('uint8array');
-        resolve({ manifest, db });
-      } catch (error) {
-        console.log(error)
-        reject(error)
-      }
+
+      const dbName = manifest.userDataBackup.databaseName;
+      const db = await zip.files[dbName].async('uint8array');
+      resolve({ manifest, db });
     }
 
     reader.onerror = reject;
@@ -34,7 +31,9 @@ export function parseJWLibFile(file: Blob) {
 export function downloadAsJWLibFile(file: JWLibFile) {
   const zip = new JSZip();
   zip.file('manifest.json', JSON.stringify(file.manifest));
-  zip.file('userData.db', file.db);
+
+  const dbName = file.manifest.userDataBackup.databaseName;
+  zip.file(dbName, file.db);
   zip.generateAsync({type: 'blob',  compression: "DEFLATE"}).then((zipFile) => saveAs(zipFile, `${file.manifest.name}.jwlibrary`))
 }
 
