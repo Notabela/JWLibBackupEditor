@@ -15,6 +15,7 @@ export function parseJWLibFile(file: Blob) {
 
     reader.onload = async () => {
       const zip = await JSZip.loadAsync(reader.result!);
+      console.log(zip);
       const manifest = JSON.parse(await zip.files['manifest.json'].async('string'));
       const db = await zip.files['userData.db'].async('uint8array');
 

@@ -80,9 +80,6 @@
     },
     watch: {
       async backupFile(value) {
-        console.log('backupFile uploaded');
-
-        try {
         if (value) {
           this.parsedFile = await parseJWLibFile(value);
           this.tags = getTags(this.parsedFile.db);
@@ -90,9 +87,7 @@
         } else {
           this.parsedFile = null;
         }
-        } catch (error) {
-          console.error(error);
-        }
+
       }
     },
     methods: {
