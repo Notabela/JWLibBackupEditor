@@ -2,7 +2,7 @@
 
 ## Introduction
 
-JWLib Backup Editor is a utility to edit a .jwlibrary backup file. These backup files are created using the JW Library® backup command, and contain your personal notes, highlighting, etc.
+[JWLib Backup Editor](https://notabela.github.io/JWLibBackupEditor/) is a utility to edit a .jwlibrary backup file. These backup files are created using the JW Library® backup command, and contain your personal notes, highlighting, etc.
 
 JWLib Backup Editor currently only supports removing notes by tag.
 
